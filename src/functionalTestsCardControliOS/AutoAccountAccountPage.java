@@ -34,7 +34,8 @@ public class AutoAccountAccountPage {
 				//String testType = "QuickLoginLogoutRun";
 				//String buildNum = "5.0.0";
 				//TestSetup testSetup = new TestSetup(testType, buildNum);
-		
+
+
 		Logs iOSLogs = new Logs();
 		LogoutCardControl Logout = new LogoutCardControl();
 		AppStringsiOS iOSText = new AppStringsiOS();
