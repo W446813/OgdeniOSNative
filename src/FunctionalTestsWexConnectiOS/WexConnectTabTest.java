@@ -1,6 +1,8 @@
 package FunctionalTestsWexConnectiOS;
 
 import java.io.IOException;
+
+import iOSCarrierClasses.LocalConfiguration;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import iOSCardClasses.RepoCardiOS;
@@ -23,11 +25,23 @@ public class WexConnectTabTest {
 		PhonePicker phone = new PhonePicker();
 		RepoCardiOS elements = new RepoCardiOS();
 
+		LocalConfiguration configs = new LocalConfiguration();
+
+		String testType = configs.getConfigurationValue("regression");
+		Boolean regression = Boolean.valueOf(testType); //set true for regression and smoke test or false for testing system
+
+		String Regression = configs.getConfigurationValue("TestName");
+		String TestName = configs.getConfigurationValue("TestName");
+		String buildNum = configs.getConfigurationValue("buildNum");
+		String appName = configs.getConfigurationValue("appName");
+		String env = configs.getConfigurationValue("env");
+
 		String pass = iOSText.PASS;
 		String fail = iOSText.FAIL;
 		String info = iOSText.INFO;
 
 		String tab;
+		String elementString;
 		String sanFran = "San Francisco, CA";
 		String newYork = "New York, NY";
 		String ogdenUtah = "Ogden, UT";
@@ -58,17 +72,43 @@ public class WexConnectTabTest {
 		// APPNAME NAME OF APP BEING TESTED
 		// SERVER IS THE SERVER YOU ARE RUNNING THE TEST ON
 
-		String TestName = "Smoke Test ";
+		//String TestName = "Smoke Test ";
 		String build = "Build #:  ";
-		String appName = "Wex Connect ";
-		String server = "Stage ";
+		//String appName = "Wex Connect ";
+		//String server = "Stage ";
 
 		try {
-			iOSLogs.setupTestYellow(TestName + build + appName +server);
+			iOSLogs.setupTestYellow(TestName + build + appName +env);
 
 			System.out.println(phone.autoPhonePickerWexConnect(appName));
 
-//More tab	
+//ENV PICKER button
+			elementString = env;
+			iOSLogs.setupTest("Server Selection");
+			Thread.sleep(3000);
+			WebElement envButton = elements.ElementButton(elementString);
+			Thread.sleep(3000);
+			if (envButton != null && envButton.isEnabled()) {
+				envButton.click();
+				iOSLogs.CapturedLogs(pass, "ENV Button for " + env+ " found and pressed");
+			}else {
+				iOSLogs.CapturedLogs(pass, "ENV Button for " + env+ " Not found");
+			}
+
+			//env start button
+			elementString = "Start";
+			Thread.sleep(3000);
+			WebElement StartButton = elements.ElementButton(elementString);
+			Thread.sleep(3000);
+			if (StartButton != null && StartButton.isEnabled()) {
+				StartButton.click();
+				iOSLogs.CapturedLogs(pass, elementString +" Button for found and pressed");
+			}else {
+				iOSLogs.CapturedLogs(pass, elementString +" Button not found");
+			}
+
+
+//More tab
 			tab = "MORE TAB";
 			iOSLogs.setupTest("MORE TAB");
 			Thread.sleep(3000);

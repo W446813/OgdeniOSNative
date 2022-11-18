@@ -2512,6 +2512,19 @@ if (findExtrasPageSource("More")) {
 }
 
 
+	public WebElement ElementButton(String elementString) throws Exception {
+
+		if (findExtrasPageSource(elementString)) {
+			WebElement AllowModal = Capabilities.driver.findElementByXPath(elementButton + "\"" + elementString + "\"]");
+			iOSLogs.CapturedLogs(info, elementString + " Button found");
+			return AllowModal;
+		} else {
+			iOSLogs.CapturedLogs(info, elementString + " Button not found");
+			return null;
+		}
+	}
+
+
 public WebElement SearchNearby() throws Exception {
 	
 	if (findExtrasPageSource("Search Nearby")) {

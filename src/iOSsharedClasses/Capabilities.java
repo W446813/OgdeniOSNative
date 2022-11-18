@@ -357,6 +357,47 @@ public static void capabilitiesCarrierControliPhone12(String appName) throws Exc
 
 
 //Start of Wex Connect Apple Devices
+
+
+
+	public static void capabilitiesWexConnectiPad10(String appName) throws Exception {
+		iOSLogs.CapturedLogs(info, "Finding Device capabilities");
+		phoneID = "iPad 10";
+		DesiredCapabilities cap = new DesiredCapabilities();
+
+
+		cap.setCapability("BROWSER_NAME", "safari");
+		cap.setCapability("platformVersion", "15.6.1");
+		cap.setCapability("udid", "e5c047a889e0fdd3d71b7eb19568176cc1c92d32");
+
+		cap.setCapability("deviceName", "iPad 10");
+		cap.setCapability("platformName", "iOS");
+		cap.setCapability("automationName", "XCUITest");
+		cap.setCapability("noReset",false);
+
+
+		cap.setCapability("app", "com.wrightexpress.fuelsitelocator");
+
+
+		cap.setCapability("appWaitDuration", "3000");
+		cap.setCapability("newCommandTimeout", 60 * 5);
+
+
+		// app open in appium
+		iOSLogs.CapturedLogs(info, "Trying to open " + appName +" on " + phoneID);
+		driver = new AppiumDriver<WebElement>(new URL("http://localhost:4723/wd/hub"), cap);
+		//iphone7 = new AppiumDriver<WebElement>(new URL("http://localhost:4723/wd/hub"), cap);
+
+
+		// shows it ran through here
+		System.out.println("Ran trhough PhoneCap");
+		appName = "Wex Connect";
+		phoneID = "iPad 10";
+		// App sleep and display
+		cap.setCapability("appWaitDuration", "3000");
+		Thread.sleep(3000); // put to sleep to load next automation.
+		System.out.println("Sleep succesfull");
+	}
 public static void capabilitiesWexConnectiPhoneXr(String appName) throws Exception {
 	iOSLogs.CapturedLogs(info, "Finding Device capabilities");
 	phoneID = "iPhone xr";
@@ -373,7 +414,7 @@ public static void capabilitiesWexConnectiPhoneXr(String appName) throws Excepti
 	cap.setCapability("noReset",false);
 	
 
-	cap.setCapability("app", "com.wrightexpress.fuelsitelocator.stage");
+	cap.setCapability("app", "com.wrightexpress.fuelsitelocator");
 	
    
 	cap.setCapability("appWaitDuration", "3000");
@@ -414,7 +455,7 @@ public static void capabilitiesWexConnectiPhone12(String appName) throws Excepti
 	cap.setCapability("noReset",false);
 	
 
-	cap.setCapability("app", "com.wrightexpress.fuelsitelocator.stage");
+	cap.setCapability("app", "com.wrightexpress.fuelsitelocator");
 	
    
 	cap.setCapability("appWaitDuration", "3000");
@@ -456,7 +497,7 @@ cap.setCapability("automationName", "XCUITest");
 cap.setCapability("noReset",false);
 //	cap.setCapability("usePrebuiltWDA",true);
 
-cap.setCapability("app", "com.wrightexpress.fuelsitelocator.stage");
+cap.setCapability("app", "com.wrightexpress.fuelsitelocator");
 
 cap.setCapability("appWaitDuration", "3000");
 cap.setCapability("newCommandTimeout", 60 * 5);
@@ -492,7 +533,7 @@ cap.setCapability("platformName", "iOS");
 cap.setCapability("automationName", "XCUITest");
 cap.setCapability("noReset",false);
 cap.setCapability("usePrebuiltWDA",true);
-cap.setCapability("app", "com.wrightexpress.fuelsitelocator.stage");
+cap.setCapability("app", "com.wrightexpress.fuelsitelocator");
 
 cap.setCapability("appWaitDuration", "3000");
 cap.setCapability("newCommandTimeout", 60 * 5);

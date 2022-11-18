@@ -255,23 +255,46 @@ public void startReport() {
 		iOSLogs.setupTest("Test continued after prior test failure");
 	}
 
+//	public String getDirPath() {
+//
+//
+//		LocalConfiguration logPath = new LocalConfiguration();
+//		String logpath = null;
+//		try {
+//			logpath = logPath.getConfigurationValue("extentreport");
+//			if (regression == true) {
+//		logpath = logPath.getConfigurationValue("extentreportRegression");
+//			}
+//		} catch (Exception e) {
+//			logpath = "/Users/W502702/AutomationLogs/logs/AutoLog_HTML_files/";
+//		}
+//		return logpath + "/iOS/" + fileDateSTR + "/";
+//	}
+
+
 	public String getDirPath() {
-		
-		
+
+
 		LocalConfiguration logPath = new LocalConfiguration();
 		String logpath = null;
 		try {
-			logpath = logPath.getConfigurationValue("extentreport");
-			if (regression == true) {
-		logpath = logPath.getConfigurationValue("extentreportRegression");
+			//logpath =	System.getProperty("user.home");
+			//logpath = logPath.getConfigurationValue("extentreport");
+			logpath = "./src/testLogs/systemTesting/";
+			if (regression) {
+				//logpath =	System.getProperty("user.home");
+				//logpath = logPath.getConfigurationValue("extentreportRegression");
+				logpath = "./src/testLogs/regressionTesting/";
+
 			}
 		} catch (Exception e) {
-			logpath = "/Users/W502702/AutomationLogs/logs/AutoLog_HTML_files/";
+			//logpath = "/Users/W502702/AutomationLogs/logs/AutoLog_HTML_files/";
+			logpath = "./src/testLogs/extra/";
 		}
-		return logpath + "/iOS/" + fileDateSTR + "/";
+		return logpath  + fileDateSTR + "/";
 	}
-		
-		
+
+
 
 	@AfterTest
 	public void tearDowndriver() throws Exception {

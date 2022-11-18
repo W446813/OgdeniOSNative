@@ -178,7 +178,23 @@ return "Carrier Control no devices found";
 	public String autoPhonePickerWexConnect(String appName) throws Exception {
 		iOSLogs.setupTest("Phone Picker started");
 		//find first device found connected as uses it for automation.
-				
+
+
+		try {
+			Capabilities.capabilitiesWexConnectiPad10(appName);
+			appName = "Wex Connect";
+			phoneID = "iPad 10";
+
+			iOSLogs.CapturedLogs(iOSText.PASS, AppName().toString() + " running on " + PhoneID().toString());
+			return appName+" app Started succesfully on iPad 10";
+
+		}catch (org.openqa.selenium.WebDriverException e) {
+			System.out.println("Checking Phone: iPad 10 Not Plugged in.");
+			iOSLogs.CapturedLogs(iOSText.INFO, "Checking Phone: iPad 10 Not Plugged in");
+
+		}
+
+
 		try {
 			Capabilities.capabilitiesWexConnectiPhoneXr(appName);
 			appName = "Wex Connect";
